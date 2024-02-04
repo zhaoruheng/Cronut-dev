@@ -1,4 +1,4 @@
-# Cronut
+# Cronut-Dev
 
 <p align="center">
   <img src="img/logo.png" width=100 />
