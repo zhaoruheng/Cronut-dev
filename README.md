@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Cronut
 
 <p align="center">
