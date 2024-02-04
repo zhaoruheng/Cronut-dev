@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Cronut
 
 <p align="center">
@@ -118,3 +119,4 @@ Cronut云盘是一款**端到端加密**且**跨平台**的同步云盘。基于
 **1.29 updata:美化UI，完善Readme**
 
 **2.4 updata:增加边栏及进度条**
+
