@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <None Remove="Assets\Fonts\SIMHEI.TTF" />
+    <None Remove="Assets\Fonts\TIMES.TTF" />
+    <None Remove="Assets\Images\MaxWindow.svg" />
+    <None Remove="Assets\Images\MinWindow.svg" />
+    <None Remove="Assets\Images\NormWindow.svg" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.AvaloniaEdit" Version="11.0.1" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.2" />
+    <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="BouncyCastle" Version="1.8.9" />
+    <PackageReference Include="DevExpress.Data" Version="23.2.1-alpha-23255" />
+    <PackageReference Include="log4net" Version="2.0.15" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="SkiaSharp" Version="2.88.6" />
+    <PackageReference Include="SkiaSharp.Extended" Version="2.0.0-preview.86" />
+    <PackageReference Include="Svg.Skia" Version="1.0.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <PackageReference Include="System.Reactive.Windows.Forms" Version="6.0.1-preview.1" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+    <PackageReference Include="System.Windows.Extensions" Version="8.0.0-rc.2.23479.6" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Reference Include="NetPublic">
+      <HintPath>bin\Debug\NetPublic.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+	
+  <ItemGroup>
+    <AvaloniaResource Update="Assets\Fonts\TIMES.TTF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
