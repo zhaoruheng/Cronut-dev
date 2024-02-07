@@ -231,7 +231,11 @@ namespace CloudClient.Views
             progressBar.Value = 50;
 
             //上传和下载文件进程
-            clientManager.SyncProcess();
+            //clientManager.SyncProcess();
+            //使用子进程上传和下载文件
+            Thread th = new Thread(SyncTh);
+            th.IsBackground = true;
+            th.Start();
             progressBar.Value = 100;
 
             fw = new FileWatcher(workPath, "*.*");
