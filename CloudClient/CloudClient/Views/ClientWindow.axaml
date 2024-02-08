@@ -2,153 +2,328 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="830" d:DesignHeight="450"
         x:Class="CloudClient.Views.ClientWindow"
 		xmlns:local="clr-namespace:CloudClient.Views"
-        Title="ClientWindow" Icon="/Assets/CronutIcon.png"
-		Height="450" Width="800"
+        Title="ClientWindow" Icon="/Assets/Icon.png"
+		Height="450" Width="830"
 		ExtendClientAreaToDecorationsHint="True"
 		ExtendClientAreaChromeHints="NoChrome"
 		ExtendClientAreaTitleBarHeightHint="-1"
 		SystemDecorations="None"
-        TransparencyBackgroundFallback="Transparent" CornerRadius="20"
-		DragDrop.AllowDrop="True">
+        TransparencyBackgroundFallback="Transparent" 
+		CornerRadius="20"
+		DragDrop.AllowDrop="True"
+		Background="#FFE8E0">
 
-	<Grid RowDefinitions="10.2*,90*">
-		<!--第一行的内容-->
-		<Border Grid.Row="0" Margin="0,0,0,0" Background="#0572b0" CornerRadius="6">
-			<Grid ColumnDefinitions="2*,5*" >
-				<SplitView x:Name="splitView1" IsPaneOpen="True"
-						   DisplayMode="Inline" OpenPaneLength="60">
-					<SplitView.Pane>
-						<Border CornerRadius="2">
-							<StackPanel Background="#0572b0" Orientation="Horizontal">
-								<Button Background="Transparent" HorizontalAlignment="Left" Margin="6,3.1,0,6"
-										Click="OpenFolder_Click" CornerRadius="5"
-										Width="42" Height="37">
-									<Image Source="{SvgImage /Assets/Images/leftArrow.svg}"/>
-								</Button>
-								<TextBlock x:Name="fileUploadTextBlock" IsVisible="False" VerticalAlignment="Center"
-										   Text="File Upload Process:" FontWeight="Bold" FontFamily="TimesNewRoman"
-										   FontStyle="Italic" Margin="3,0,0,0"/>
-							</StackPanel>
-						</Border>
-					</SplitView.Pane>
-				</SplitView>
-				
-				<Grid Grid.Column="1" x:Name="iconGrid" Width="890">
-					<UniformGrid Rows="1" Columns="5" Width="370" Grid.Column="0" HorizontalAlignment="Left">
-						
-						<Button Grid.Column="0" Width="44" Height="37" Background="Transparent"
-						Margin="15,0" Click="SelectAllFile_Click" CornerRadius="5">
-							<Image Source="{SvgImage /Assets/Images/Home.svg}" Stretch="UniformToFill"></Image>
-						</Button>
+	<!--整个界面分成上下两栏-->
+	<Grid RowDefinitions="Auto,Auto">
 
-						<Button Grid.Column="1" Background="Transparent" Width="45" Height="35"
-								Margin="15,0" Click="SelectPicFile_Click" CornerRadius="5">
-							<Image Source="{SvgImage /Assets/Images/Picture.svg}" Stretch="UniformToFill"/>
+		<!--第一行-->
+		<Grid Grid.Row="0" Height="53"
+			  ColumnDefinitions="Auto,Auto,Auto,Auto">
 
-						</Button>
+			<!--左上角图标-->
+			<Image Grid.Column="0" Width="43" Height="45"
+						Margin="25,8,0,0"
+				   Source="/Assets/Images/Girl.png"/>
 
-						<Button Grid.Column="2" Background="Transparent" Width="37" Height="40"
-								Margin="15,0" Click="SelectTextFile_Click" CornerRadius="5">
-							<Image Source="{SvgImage /Assets/Images/File.svg}" Stretch="UniformToFill"/>
-						</Button>
+			<!--Bingo Cloud文字-->
+			<TextBlock Grid.Column="1" Text="Bingo Cloud" FontFamily="Arial"
+					   FontSize="20" FontWeight="Black"
+					   Margin="285,19,0,0"/>
 
-						<Button Grid.Column="3" Background="Transparent" Width="44" Height="35"
-								Margin="15,0" Click="SelectVideoFile_Click" CornerRadius="5">
-							<Image Source="{SvgImage /Assets/Images/Video.svg}"/>
-						</Button>
+			<!--最小化-->
+			<Button Grid.Column="2" Background="Transparent" Width="32" Height="32" Margin="240,0,0,0"
+					CornerRadius="5" Click="MinButton_Click" HorizontalAlignment="Right">
+				<Image Source="{SvgImage /Assets/Images/MinWindow.svg}" Stretch="UniformToFill"/>
+			</Button>
 
-						<Button Grid.Column="4" Background="Transparent" Width="43" Height="32"
-								Margin="15,0,0,0" Click="SelectOtherFile_Click" CornerRadius="5">
-							<Image Source="{SvgImage /Assets/Images/Other.svg}"/>
-						</Button>
-					</UniformGrid>
-				</Grid>
-				
-				<UniformGrid Grid.Column="1" Rows="1" Columns="4" Width="10" HorizontalAlignment="Right" Margin="0,0,40,0">
-					<!--最小化-->
-					<Button Background="Transparent" Width="32" Height="32" Margin="10,0"
-							CornerRadius="5" Click="MinButton_Click" HorizontalAlignment="Right">
-						<Image Source="{SvgImage /Assets/Images/MinWindow.svg}" Stretch="UniformToFill"/>
+			<!--关闭-->
+			<Button Grid.Column="3" Background="Transparent" Width="32" Height="32"
+					Click="CloseButton_Click" CornerRadius="5" Margin="20,0,0,0">
+				<Image Source="{SvgImage /Assets/Images/Close.svg}" Stretch="UniformToFill"/>
+			</Button>
+		</Grid>
+
+		
+		
+		<!--第二行-->
+		<Grid Grid.Row="1" Height="385"
+			  ColumnDefinitions="Auto,Auto,Auto">
+
+			<!--左侧的导航栏-->
+			<Border Grid.Column="0"
+					CornerRadius="20" Width="62" Height="362"
+					Background="#DBC9CF" Margin="13,0,0,0"
+					BoxShadow="3 4 6 1 #C0AFA9">
+
+				<UniformGrid Rows="6" Columns="1">
+
+					<UniformGrid.Styles>
+						<Style Selector="Button /template/ContentPresenter">
+							<Setter Property="Transitions">
+								<Transitions>
+									<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15"/>
+								</Transitions>
+							</Setter>
+						</Style>
+
+						<Style Selector="Button:pointerover /template/ContentPresenter">
+							<Setter Property="Background" Value="#DBC9CF"/>
+							<Setter Property="RenderTransform" Value="scale(1.07)"/>
+							<Setter Property="Opacity" Value="0.4"/>
+							<Setter Property="CornerRadius" Value="10"></Setter>
+						</Style>
+					</UniformGrid.Styles>
+					
+					<Button Width="44" Height="37" Background="Transparent"
+							HorizontalAlignment="Center"
+							Click="SelectAllFile_Click"
+							ToolTip.Tip="Select all Files">
+						<Image Source="{SvgImage /Assets/Images/Home.svg}" Stretch="UniformToFill"/>
 					</Button>
 
-					<!--关闭-->
-					<Button Background="Transparent" Width="32" Height="32"
-							Click="CloseButton_Click" CornerRadius="5" Margin="5,0">
-						<Image Source="{SvgImage /Assets/Images/Close.svg}" Stretch="UniformToFill"/>
+					<Button Width="45" Height="35" Background="Transparent"
+							HorizontalAlignment="Center"
+							Click="SelectPicFile_Click"
+							ToolTip.Tip="Select Picture">
+						<Image Source="{SvgImage /Assets/Images/Picture.svg}" Stretch="UniformToFill"/>
+					</Button>
+
+					<Button Width="44" Height="35" Background="Transparent"
+							HorizontalAlignment="Center"
+							Click="SelectVideoFile_Click"
+							ToolTip.Tip="Select Video">
+						<Image Source="{SvgImage /Assets/Images/Video.svg}"/>
+					</Button>
+
+					<Button Width="37" Height="40" Background="Transparent"
+							HorizontalAlignment="Center"
+							Click="SelectTextFile_Click"
+							ToolTip.Tip="Select Document">
+						<Image Source="{SvgImage /Assets/Images/File.svg}" Stretch="UniformToFill"/>
+					</Button>
+
+					<Button Width="43" Height="32" Background="Transparent"
+							HorizontalAlignment="Center"
+							Click="SelectOtherFile_Click"
+							ToolTip.Tip="Select other Files">
+						<Image Source="{SvgImage /Assets/Images/Other.svg}"/>
+					</Button>
+
+					<Button Width="42" Height="37" Background="Transparent"
+							HorizontalAlignment="Center" 
+							Click="FoldButton_Click"
+							ToolTip.Tip="Fold and Unfold">
+						<Image Source="{SvgImage /Assets/Images/Sidebar.svg}"/>
 					</Button>
 				</UniformGrid>
-			</Grid>
-		</Border>
-		
-		
-		<!--第二行内容-->
-		<Grid Grid.Row="1" ColumnDefinitions="2*,5*">	
-			<!--左侧的滚动条 && 进度条-->
+			</Border>
 
-			<SplitView x:Name="splitView2" IsPaneOpen="True"
-					   DisplayMode="Inline" OpenPaneLength="60">
-				<SplitView.Pane>
-					<Grid x:Name="progressBarGrid" IsVisible="False" Grid.Column="0" RowDefinitions="10*,1.3*">
-						<ScrollViewer Grid.Row="0" Height="358" VerticalScrollBarVisibility="Auto">
-							<ListBox x:Name="UploadingFileList" Background="AliceBlue" CornerRadius="10">
-								<ListBox.ItemTemplate>
-									<DataTemplate>
-										<TextBlock Text="{Binding}" TextWrapping="Wrap" FontSize="11"></TextBlock>
-									</DataTemplate>
-								</ListBox.ItemTemplate>
-							</ListBox>
-						</ScrollViewer>
+			<!--中间的文件上传进程-->
+			<Grid x:Name="uploadFileProcessGrid" Grid.Column="1"
+				  RowDefinitions="Auto,Auto"
+				  IsVisible="False">
+
+				<!--文件上传进程表格-->
+				<Border Grid.Row="0" Width="167" Height="295"
+					Margin="15,13,0,0"
+					Background="#D6DBD9"
+					CornerRadius="20"
+					BoxShadow="3 4 6 1 #C0AFA9">
+
+					<ScrollViewer Height="290" VerticalScrollBarVisibility="Auto">
 						
-						<StackPanel Margin="0" Grid.Row="1" Background="AliceBlue">
-							<ProgressBar  Margin="0,8,0,8" Height="10" Width="10"
-							  Minimum="0" Maximum="100" Value="{Binding Progress}"
-							  ShowProgressText="False" Name="progress"
-							  CornerRadius="20" BorderBrush="#0572b0" BorderThickness="2"
-							  Background="Transparent" Foreground="#0572b0">
+						<ScrollViewer.Styles>
+							<Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+								<Setter Property="Background" Value="#C2C5C4" />
+							</Style>
+						</ScrollViewer.Styles>
+						
+						<ListBox x:Name="UploadingFileList" Background="#D6DBD9"
+								 CornerRadius="20">
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding}" TextWrapping="Wrap" FontSize="11"></TextBlock>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+						</ListBox>
+					</ScrollViewer>
+				</Border>
 
-							</ProgressBar>
-							<TextBlock Text="Uploading..." HorizontalAlignment="Center" FontSize="10" VerticalAlignment="Top"/>
-						</StackPanel>
-					</Grid>
-				</SplitView.Pane>
-			</SplitView>
-			
-			
-			<!--右侧的文件列表-->
-			<Grid x:Name="fileListGrid" Width="890" Grid.Column="1" RowDefinitions="Auto,Auto">
-
-				<!--选择文件路径-->
-				<Grid Grid.Row="0" Margin="0,8" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto">
-					<TextBox x:Name="ShowFilePath" Grid.Column="0" Margin="10,3,5,0" Background="#d4e6f3" IsReadOnly="True" 
-							 Watermark="Choose a file path" BorderBrush="Transparent" Height="10" Width="480"/>
+				<!--进度条-->
+				<Border Grid.Row="1" Width="167" Height="55"
+						Background="#FFFAFA"
+						Margin="15,10,0,0"
+						CornerRadius="20"
+						BoxShadow="3 4 6 1 #C0AFA9">
 					
-					<Button x:Name="ChooseButton" Grid.Column="1" Margin="5,3" 
-							Content="Choose" Background="#d4e6f3" Click="OpenFileButton_Click" 
-							Height="30" CornerRadius="5" Foreground="Black" FontWeight="Black"/>
-					
-					<Button x:Name="ConfirmButton" Grid.Column="2" Content="Confirm" 
-							Background="#d4e6f3" Height="30" Click="ConfirmButton_Click"
-							CornerRadius="5" Foreground="Black" FontWeight="Black"/>
-					
-					<TextBlock Grid.Column="3" Width="20"></TextBlock>
-					<Button x:Name="UpdateFile" Click="UpdateFile_Click" 
-							Grid.Column="4" HorizontalAlignment="Right" 
-							Height="36" Width="36" Background="#0572b0">
-						<Image Source="{SvgImage /Assets/Images/Update.svg}"/>
-					</Button>
-				</Grid>
+					<StackPanel>
+						<Border BorderBrush="#BE968A" BorderThickness="2.5"
+							Width="132" Height="13" CornerRadius="20" Margin="0,18,0,0">
+							
+							<ProgressBar Height="10" MinWidth="130" Width="130"
+							Minimum="0" Maximum="100" Value="{Binding Progress}"
+							ShowProgressText="False" Name="progress"
+							CornerRadius="20" BorderBrush="Transparent"
+							BorderThickness="2.5"
+							Background="White" Foreground="#EBBC74"
+							Margin="0,0,0,0"/>
+						</Border>
+						
+						<TextBlock Text="Uploading..." HorizontalAlignment="Center" 
+								   FontSize="10" VerticalAlignment="Top"
+								   Margin="0,8,0,0" FontFamily="Arial"/>
+					</StackPanel>
+				</Border>
 				
-				<!--可视化上传的文件-->
-				<ScrollViewer x:Name="uploadedFileViewer" Grid.Row="1" Height="300" Width="890" VerticalScrollBarVisibility="Auto">
-					<WrapPanel x:Name="FileWrapPanel" Grid.Row="1">
-						<local:FileButton x:Name="FileIconButton"/>
-					</WrapPanel>
-				</ScrollViewer>
 			</Grid>
+
+			<!--右侧的文件列表-->
+			<Border Grid.Column="2" Width="713" Height="362"
+					x:Name="uploadFileBorder"
+					Background="#FFFAFA"
+					Margin="16,0,0,0"
+					CornerRadius="20"
+					BoxShadow="3 4 6 1 #C0AFA9" Opacity="100">
+
+				<Grid RowDefinitions="Auto,Auto">
+					<Grid Grid.Row="0" ColumnDefinitions="Auto,Auto,Auto,Auto">
+
+						
+						<!--选择文件路径-->
+						<Border Grid.Column="0"
+								x:Name="chooseFilePathTextBox"
+								Background="#BE968A"
+								Width="462" Height="35"
+								Margin="13,25,0,0"
+								HorizontalAlignment="Left"
+								VerticalAlignment="Top"
+								CornerRadius="10"
+								BoxShadow="3 4 6 1 #928C8C">
+
+							<TextBox x:Name="ShowFilePath"
+									 Background="#BE968A" BorderBrush="Transparent"
+									 VerticalContentAlignment="Center"
+									 Watermark="Choose a file Path"
+									 Foreground="#E2DDDD"
+									 CornerRadius="10"
+									 IsReadOnly="True"/>
+						</Border>
+
+
+						<Grid.Styles>
+							<Style Selector="Button /template/ContentPresenter">
+								<Setter Property="Transitions">
+									<Transitions>
+										<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15"/>
+									</Transitions>
+								</Setter>
+							</Style>
+
+							<Style Selector="Button:pointerover /template/ContentPresenter">
+								<Setter Property="Background" Value="Transparent"/>
+								<Setter Property="RenderTransform" Value="scale(1.07)"/>
+								<Setter Property="Opacity" Value="0.4"/>
+								<Setter Property="CornerRadius" Value="10"></Setter>
+								<Setter Property="Foreground" Value="White"/>
+							</Style>
+
+							<Style Selector="Button:disabled /template/ContentPresenter">
+								<Setter Property="Background" Value="Gray"/>
+								<Setter Property="CornerRadius" Value="10"/>	
+							</Style>
+						</Grid.Styles>
+						
+						<!--选择按钮-->
+						<Border Grid.Column="1"
+								Background="#EBBC74" Width="70" Height="35"
+								VerticalAlignment="Top"
+								Margin="13,25,0,0"
+								CornerRadius="10"
+								BoxShadow="3 4 6 1 #928C8C">
+							<Button x:Name="ChooseButton"
+									Background="#EBBC74"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Center"
+									VerticalContentAlignment="Center"
+									Content="Choose"
+									FontFamily="Arial" FontSize="13"
+									FontWeight="Black"
+									Foreground="White" Width="71" Height="37"
+									CornerRadius="10"
+									Click="OpenFileButton_Click"/>
+						</Border>
+
+						<!--确认按钮-->
+						<Border Grid.Column="2"
+								Background="#EBBC74" Width="73" Height="35"
+								VerticalAlignment="Top"
+								Margin="13,25,0,0"
+								CornerRadius="10"
+								BoxShadow="3 4 6 1 #928C8C">
+							<Button x:Name="ConfirmButton"
+									Background="#EBBC74"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Center"
+									VerticalContentAlignment="Center"
+									Content="Confirm" CornerRadius="10"
+									FontFamily="Arial" FontSize="13"
+									FontWeight="Black"
+									Foreground="White" Width="74" Height="37"
+									Click="ConfirmButton_Click"/>
+						</Border>
+
+						<!--刷新按钮-->
+						<Border Grid.Column="3"
+								Background="#E2C6A0" Width="35" Height="35"
+								VerticalAlignment="Top"
+								Margin="13,25,0,0"
+								CornerRadius="80"
+								BoxShadow="3 4 6 1 #928C8C">
+
+							<Border.Styles>
+								<Style Selector="Button:pointerover /template/ContentPresenter">
+									<Setter Property="Background" Value="Transparent"/>
+									<Setter Property="CornerRadius" Value="80"/>
+								</Style>
+							</Border.Styles>
+							
+							<Button x:Name="UpdateFile"
+									Background="Transparent"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Center"
+									Click="UpdateFile_Click"
+									ToolTip.Tip="Update File List">
+								<Image Source="{SvgImage /Assets/Images/Update.svg}"/>
+							</Button>
+						</Border>
+					</Grid>
+
+
+					<ScrollViewer x:Name="uploadedFileViewer" Height="270" 
+							  Width="680" VerticalScrollBarVisibility="Auto"
+							  Margin="0,80,0,0">
+						<WrapPanel x:Name="FileWrapPanel"
+							   Height="270" Width="680"
+							   Background="Transparent">
+							<local:FileButton x:Name="FileIconButton"/>
+						</WrapPanel>
+					</ScrollViewer>
+						
+
+					<!--背景图-->
+					<Image Source="avares://CloudClient/Assets/Images/MakeOK.png"
+					   HorizontalAlignment="Right"
+					   VerticalAlignment="Bottom"
+					   Height="250" Opacity="30"/>
+
+				</Grid>
+
+			</Border>
+
 		</Grid>
-		<Image Source="{SvgImage /Assets/Images/Talk.svg}" Opacity="0.4" Width="300" Height="300" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="-20,-463"></Image>
 	</Grid>
+
 </Window>

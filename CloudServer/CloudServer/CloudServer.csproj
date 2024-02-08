@@ -12,12 +12,16 @@
 
   
   <ItemGroup>
-    <None Remove="Assets\CronutIcon.png" />
     <None Remove="Assets\Fonts\TIMES.TTF" />
     <None Remove="Assets\Fonts\TIMESBD.TTF" />
     <None Remove="Assets\Fonts\TIMESBI.TTF" />
     <None Remove="Assets\Fonts\TIMESI.TTF" />
+    <None Remove="Assets\Icon.png" />
     <None Remove="Assets\Images\Close.svg" />
+    <None Remove="Assets\Images\File.svg" />
+    <None Remove="Assets\Images\MakeOK.png" />
+    <None Remove="Assets\Images\Post.png" />
+    <None Remove="Assets\Images\User.svg" />
   </ItemGroup>
 
   <ItemGroup>

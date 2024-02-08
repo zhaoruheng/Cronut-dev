@@ -273,15 +273,19 @@ public partial class MainWindow : Window
         {
             // 如果密码可见，将密码字符设置为 ●
             passwordBox.PasswordChar = '●';
-            seePasswordButton.IsVisible = true;
+            SeePasswordButton.IsVisible = true;
+            SeePasswordBorder.IsVisible = true;
             UnseePasswordButton.IsVisible = false;
+            UnseePasswordBorder.IsVisible = false;
         }
         else
         {
             // 如果密码不可见，将密码字符设置为无
             passwordBox.PasswordChar = '\0';
-            seePasswordButton.IsVisible = false;
+            SeePasswordButton.IsVisible = false;
+            SeePasswordBorder.IsVisible = false;
             UnseePasswordButton.IsVisible = true;
+            UnseePasswordBorder.IsVisible = true;
         }
 
         isPasswordVisible = !isPasswordVisible;
@@ -294,14 +298,18 @@ public partial class MainWindow : Window
             // 如果密码可见，将密码字符设置为 ●
             PasswordBoxSignUp.PasswordChar = '●';
             SeePasswordButtonSignUp.IsVisible = true;
+            SeePasswordBorderSignUp.IsVisible = true;
             UnseePasswordButtonSignUp.IsVisible = false;
+            UnseePasswordBorderSignUp.IsVisible = false;
         }
         else
         {
             // 如果密码不可见，将密码字符设置为无
             PasswordBoxSignUp.PasswordChar = '\0';
             SeePasswordButtonSignUp.IsVisible = false;
+            SeePasswordBorderSignUp.IsVisible = false;
             UnseePasswordButtonSignUp.IsVisible = true;
+            UnseePasswordBorderSignUp.IsVisible = true;
         }
 
         isPasswordVisible1 = !isPasswordVisible1;
@@ -314,14 +322,18 @@ public partial class MainWindow : Window
             // 如果密码可见，将密码字符设置为 ●
             PasswordBoxSignUpConfirm.PasswordChar = '●';
             SeePasswordButtonSignUpConfirm.IsVisible = true;
+            SeePasswordBorderSignUpConfirm.IsVisible = true;
             UnseePasswordButtonSignUpConfirm.IsVisible = false;
+            UnseePasswordBorderSignUpConfirm.IsVisible = false;
         }
         else
         {
             // 如果密码不可见，将密码字符设置为无
             PasswordBoxSignUpConfirm.PasswordChar = '\0';
             SeePasswordButtonSignUpConfirm.IsVisible = false;
+            SeePasswordBorderSignUpConfirm.IsVisible = false;
             UnseePasswordButtonSignUpConfirm.IsVisible = true;
+            UnseePasswordBorderSignUpConfirm.IsVisible = true;
         }
 
         isPasswordVisible2 = !isPasswordVisible2;

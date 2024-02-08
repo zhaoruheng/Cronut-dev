@@ -12,6 +12,7 @@ using Avalonia.Input;
 using System.Diagnostics;
 using log4net;
 using Avalonia.Threading;
+using Avalonia.Media;
 
 namespace CloudClient.Views
 {
@@ -28,11 +29,10 @@ namespace CloudClient.Views
         private static ProgressBar progressBar;
         private static ILog log = LogManager.GetLogger("Log");
         private SplitView sv1, sv2;
-        private Grid pgbGrid, flGrid, iGrid;
         private ScrollViewer ufViewer1;
-        private TextBox sfpTextBox;
         private TextBlock fuTextBlock;
         public static int processValue = 0;
+        bool isFileUploadProcessVisible = false;
 
         private bool close = true;
 
@@ -63,7 +63,7 @@ namespace CloudClient.Views
                 log.Info("用户已选择文件夹");
 
                 ShowFilePath.Watermark = workPath;
-                ShowFilePath.IsEnabled = false;
+                //ShowFilePath.IsEnabled = false;
                 ChooseButton.IsEnabled = false;
                 ConfirmButton.IsEnabled = false;
 
@@ -84,39 +84,51 @@ namespace CloudClient.Views
             UpdateFileList();
         }
 
+        private void FoldButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (isFileUploadProcessVisible)
+            {
+                uploadFileProcessGrid.IsVisible = false;
+                uploadFileBorder.Width = 713;
+                chooseFilePathTextBox.Width = 462;
+                ShowFilePath.Width = 462;
+                FileWrapPanel.Width = 680;
+                uploadedFileViewer.Width = 680;
+            }
+            else
+            {
+                uploadFileProcessGrid.IsVisible = true;
+                uploadFileBorder.Width = 531;
+                chooseFilePathTextBox.Width = 280;
+                ShowFilePath.Width = 280;
+                FileWrapPanel.Width = 510;
+                uploadedFileViewer.Width = 510;
+            }
+
+            isFileUploadProcessVisible = !isFileUploadProcessVisible;
+        }
+
         private void OpenFolder_Click(object sender, RoutedEventArgs e)
         {
             sv1 = this.Find<SplitView>("splitView1");
             sv2 = this.Find<SplitView>("splitView2");
-            pgbGrid = this.Find<Grid>("progressBarGrid");
-            flGrid = this.Find<Grid>("fileListGrid");
-            iGrid = this.Find<Grid>("iconGrid");
             ufViewer1 = this.Find<ScrollViewer>("uploadedFileViewer");
-            sfpTextBox = this.Find<TextBox>("ShowFilePath");
             fuTextBlock = this.Find<TextBlock>("fileUploadTextBlock");
 
             if (close)
             {
                 sv1.OpenPaneLength = 230;
                 sv2.OpenPaneLength = 230;
-                pgbGrid.IsVisible = true;
                 fuTextBlock.IsVisible = true;
-                iGrid.Width = 570;
-                flGrid.Width = 570;
                 ufViewer1.Width = 570;
-                sfpTextBox.Width = 320;
                 close = false;
             }
             else
             {
                 sv1.OpenPaneLength = 60;
                 sv2.OpenPaneLength = 60;
-                pgbGrid.IsVisible = false;
                 fuTextBlock.IsVisible = false;
-                iGrid.Width = 890;
-                flGrid.Width = 890;
                 ufViewer1.Width = 890;
-                sfpTextBox.Width = 480;
                 close = true;
             }
         }
@@ -209,6 +221,7 @@ namespace CloudClient.Views
             {
                 ShowFilePath.Watermark = workPath;
                 ChooseButton.IsEnabled = false;
+                ChooseButton.Background = new SolidColorBrush(Colors.Red);
                 ChooseButton.Content = "Chosen";
             }
         }
@@ -232,7 +245,6 @@ namespace CloudClient.Views
 
             //上传和下载文件进程
             //clientManager.SyncProcess();
-            //使用子进程上传和下载文件
             Thread th = new Thread(SyncTh);
             th.IsBackground = true;
             th.Start();
