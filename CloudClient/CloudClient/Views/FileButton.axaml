@@ -15,8 +15,8 @@
 			</Style>
 		</Button.Styles>
 		
-		<StackPanel Width="50" Background="#FFFAFA">
-			<Image Source="{SvgImage /Assets/Images/FileIcon.svg}"></Image>
+		<StackPanel Width="50" Height="48" Background="#FFFAFA">
+			<Image Source="avares://CloudClient/Assets/Images/File.png"></Image>
 			<TextBlock x:Name="FileButtonTextBlock" HorizontalAlignment="Center"
 					   Margin="0,2" FontSize="10" Width="70" 
 					   TextAlignment="Center"/>

@@ -15,9 +15,14 @@
     <None Remove="Assets\Fonts\SIMHEI.TTF" />
     <None Remove="Assets\Fonts\TIMES.TTF" />
     <None Remove="Assets\Icon.png" />
+    <None Remove="Assets\Images\BoyReading.png" />
+    <None Remove="Assets\Images\File.png" />
     <None Remove="Assets\Images\File.svg" />
     <None Remove="Assets\Images\Girl.png" />
     <None Remove="Assets\Images\GirlAndDog.png" />
+    <None Remove="Assets\Images\GirlReading.png" />
+    <None Remove="Assets\Images\GirlRunning.png" />
+    <None Remove="Assets\Images\GirlSwing.png" />
     <None Remove="Assets\Images\Home.svg" />
     <None Remove="Assets\Images\MakeOK.png" />
     <None Remove="Assets\Images\MaxWindow.svg" />

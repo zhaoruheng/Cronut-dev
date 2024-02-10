@@ -14,39 +14,37 @@
         TransparencyBackgroundFallback="Transparent" 
 		CornerRadius="20"
 		DragDrop.AllowDrop="True"
-		Background="#FFE8E0">
+		Background="#DDDEDE">
 
+	<Canvas>
+		
+		<Image Source="/Assets/Images/GirlRunning.png"
+			   Width="226" Margin="75,-5,0,0"/>
+		
 	<!--整个界面分成上下两栏-->
 	<Grid RowDefinitions="Auto,Auto">
-
+		
 		<!--第一行-->
 		<Grid Grid.Row="0" Height="53"
 			  ColumnDefinitions="Auto,Auto,Auto,Auto">
 
-			<!--左上角图标-->
-			<Image Grid.Column="0" Width="43" Height="45"
-						Margin="25,8,0,0"
-				   Source="/Assets/Images/Girl.png"/>
-
-			<!--Bingo Cloud文字-->
-			<TextBlock Grid.Column="1" Text="Bingo Cloud" FontFamily="Arial"
-					   FontSize="20" FontWeight="Black"
-					   Margin="285,19,0,0"/>
+			<!--Carefree Cloud文字-->
+			<TextBlock Grid.Column="1" Text="Carefree Cloud" FontFamily="Trebuchet MS"
+					   FontSize="20" FontWeight="Bold"
+					   Margin="358,22,0,0"/>
 
 			<!--最小化-->
-			<Button Grid.Column="2" Background="Transparent" Width="32" Height="32" Margin="240,0,0,0"
+			<Button Grid.Column="2" Background="Transparent" Width="32" Height="32" Margin="220,10,0,0"
 					CornerRadius="5" Click="MinButton_Click" HorizontalAlignment="Right">
 				<Image Source="{SvgImage /Assets/Images/MinWindow.svg}" Stretch="UniformToFill"/>
 			</Button>
 
 			<!--关闭-->
 			<Button Grid.Column="3" Background="Transparent" Width="32" Height="32"
-					Click="CloseButton_Click" CornerRadius="5" Margin="20,0,0,0">
+					Click="CloseButton_Click" CornerRadius="5" Margin="15,10,0,0">
 				<Image Source="{SvgImage /Assets/Images/Close.svg}" Stretch="UniformToFill"/>
 			</Button>
 		</Grid>
-
-		
 		
 		<!--第二行-->
 		<Grid Grid.Row="1" Height="385"
@@ -55,8 +53,8 @@
 			<!--左侧的导航栏-->
 			<Border Grid.Column="0"
 					CornerRadius="20" Width="62" Height="362"
-					Background="#DBC9CF" Margin="13,0,0,0"
-					BoxShadow="3 4 6 1 #C0AFA9">
+					Background="#F3F3F3" Margin="13,-10,0,0"
+					BoxShadow="3 4 6 1 #7D7D7D">
 
 				<UniformGrid Rows="6" Columns="1">
 
@@ -70,7 +68,7 @@
 						</Style>
 
 						<Style Selector="Button:pointerover /template/ContentPresenter">
-							<Setter Property="Background" Value="#DBC9CF"/>
+							<Setter Property="Background" Value="Transparent"/>
 							<Setter Property="RenderTransform" Value="scale(1.07)"/>
 							<Setter Property="Opacity" Value="0.4"/>
 							<Setter Property="CornerRadius" Value="10"></Setter>
@@ -123,17 +121,17 @@
 
 			<!--中间的文件上传进程-->
 			<Grid x:Name="uploadFileProcessGrid" Grid.Column="1"
-				  RowDefinitions="Auto,Auto"
+				  RowDefinitions="Auto,Auto" Canvas.Top="100"
 				  IsVisible="False">
 
 				<!--文件上传进程表格-->
 				<Border Grid.Row="0" Width="167" Height="295"
-					Margin="15,13,0,0"
-					Background="#D6DBD9"
-					CornerRadius="20"
-					BoxShadow="3 4 6 1 #C0AFA9">
+					Margin="15,6,0,7"
+					Background="#F3F3F3"
+					CornerRadius="20" 
+					BoxShadow="3 4 6 1 #7D7D7D">
 
-					<ScrollViewer Height="290" VerticalScrollBarVisibility="Auto">
+					<ScrollViewer Height="290" VerticalScrollBarVisibility="Auto" Canvas.Top="100">
 						
 						<ScrollViewer.Styles>
 							<Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
@@ -141,7 +139,7 @@
 							</Style>
 						</ScrollViewer.Styles>
 						
-						<ListBox x:Name="UploadingFileList" Background="#D6DBD9"
+						<ListBox x:Name="UploadingFileList" Background="#F3F3F3"
 								 CornerRadius="20">
 							<ListBox.ItemTemplate>
 								<DataTemplate>
@@ -154,21 +152,21 @@
 
 				<!--进度条-->
 				<Border Grid.Row="1" Width="167" Height="55"
-						Background="#FFFAFA"
-						Margin="15,10,0,0"
+						Background="#F3F3F3"
+						Margin="15,3,0,0"
 						CornerRadius="20"
-						BoxShadow="3 4 6 1 #C0AFA9">
+						BoxShadow="3 4 6 1 #7D7D7D">
 					
 					<StackPanel>
-						<Border BorderBrush="#BE968A" BorderThickness="2.5"
+						<Border BorderBrush="#23262B" BorderThickness="1.5"
 							Width="132" Height="13" CornerRadius="20" Margin="0,18,0,0">
 							
-							<ProgressBar Height="10" MinWidth="130" Width="130"
+							<ProgressBar Height="10" MinWidth="128" Width="128"
 							Minimum="0" Maximum="100" Value="{Binding Progress}"
 							ShowProgressText="False" Name="progress"
 							CornerRadius="20" BorderBrush="Transparent"
-							BorderThickness="2.5"
-							Background="White" Foreground="#EBBC74"
+							BorderThickness="2.5" HorizontalAlignment="Center"
+							Background="White" Foreground="#747C88"
 							Margin="0,0,0,0"/>
 						</Border>
 						
@@ -184,9 +182,9 @@
 			<Border Grid.Column="2" Width="713" Height="362"
 					x:Name="uploadFileBorder"
 					Background="#FFFAFA"
-					Margin="16,0,0,0"
+					Margin="16,-5,0,0"
 					CornerRadius="20"
-					BoxShadow="3 4 6 1 #C0AFA9" Opacity="100">
+					BoxShadow="3 4 6 1 #7D7D7D" >
 
 				<Grid RowDefinitions="Auto,Auto">
 					<Grid Grid.Row="0" ColumnDefinitions="Auto,Auto,Auto,Auto">
@@ -195,16 +193,16 @@
 						<!--选择文件路径-->
 						<Border Grid.Column="0"
 								x:Name="chooseFilePathTextBox"
-								Background="#BE968A"
+								Background="#878F9C"
 								Width="462" Height="35"
 								Margin="13,25,0,0"
 								HorizontalAlignment="Left"
 								VerticalAlignment="Top"
 								CornerRadius="10"
-								BoxShadow="3 4 6 1 #928C8C">
+								BoxShadow="3 4 6 1 #7D7D7D">
 
 							<TextBox x:Name="ShowFilePath"
-									 Background="#BE968A" BorderBrush="Transparent"
+									 Background="#878F9C" BorderBrush="Transparent"
 									 VerticalContentAlignment="Center"
 									 Watermark="Choose a file Path"
 									 Foreground="#E2DDDD"
@@ -238,13 +236,13 @@
 						
 						<!--选择按钮-->
 						<Border Grid.Column="1"
-								Background="#EBBC74" Width="70" Height="35"
+								Background="#495C7B" Width="70" Height="35"
 								VerticalAlignment="Top"
 								Margin="13,25,0,0"
 								CornerRadius="10"
-								BoxShadow="3 4 6 1 #928C8C">
+								BoxShadow="3 4 6 1 #7D7D7D">
 							<Button x:Name="ChooseButton"
-									Background="#EBBC74"
+									Background="#495C7B"
 									VerticalAlignment="Center"
 									HorizontalAlignment="Center"
 									VerticalContentAlignment="Center"
@@ -258,13 +256,13 @@
 
 						<!--确认按钮-->
 						<Border Grid.Column="2"
-								Background="#EBBC74" Width="73" Height="35"
+								Background="#495C7B" Width="73" Height="35"
 								VerticalAlignment="Top"
 								Margin="13,25,0,0"
 								CornerRadius="10"
-								BoxShadow="3 4 6 1 #928C8C">
+								BoxShadow="3 4 6 1 #7D7D7D">
 							<Button x:Name="ConfirmButton"
-									Background="#EBBC74"
+									Background="#495C7B"
 									VerticalAlignment="Center"
 									HorizontalAlignment="Center"
 									VerticalContentAlignment="Center"
@@ -277,11 +275,11 @@
 
 						<!--刷新按钮-->
 						<Border Grid.Column="3"
-								Background="#E2C6A0" Width="35" Height="35"
+								Background="#495C7B" Width="35" Height="35"
 								VerticalAlignment="Top"
 								Margin="13,25,0,0"
 								CornerRadius="80"
-								BoxShadow="3 4 6 1 #928C8C">
+								BoxShadow="3 4 6 1 #7D7D7D">
 
 							<Border.Styles>
 								<Style Selector="Button:pointerover /template/ContentPresenter">
@@ -304,7 +302,7 @@
 
 					<ScrollViewer x:Name="uploadedFileViewer" Height="270" 
 							  Width="680" VerticalScrollBarVisibility="Auto"
-							  Margin="0,80,0,0">
+							  Margin="0,80,0,0" >
 						<WrapPanel x:Name="FileWrapPanel"
 							   Height="270" Width="680"
 							   Background="Transparent">
@@ -314,16 +312,18 @@
 						
 
 					<!--背景图-->
-					<Image Source="avares://CloudClient/Assets/Images/MakeOK.png"
+					<Image Source="avares://CloudClient/Assets/Images/BoyReading.png"
 					   HorizontalAlignment="Right"
 					   VerticalAlignment="Bottom"
-					   Height="250" Opacity="30"/>
+					   Height="250" Opacity="200" Margin="0,0,-100,-80"/>
 
 				</Grid>
 
 			</Border>
 
 		</Grid>
-	</Grid>
 
+		
+	</Grid>
+</Canvas>
 </Window>

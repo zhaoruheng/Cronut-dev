@@ -19,8 +19,8 @@
     <None Remove="Assets\Icon.png" />
     <None Remove="Assets\Images\Close.svg" />
     <None Remove="Assets\Images\File.svg" />
-    <None Remove="Assets\Images\MakeOK.png" />
-    <None Remove="Assets\Images\Post.png" />
+    <None Remove="Assets\Images\GirlJumping.png" />
+    <None Remove="Assets\Images\Houseplant.png" />
     <None Remove="Assets\Images\User.svg" />
   </ItemGroup>
 

@@ -15,7 +15,7 @@
 		Height="450" Width="830"
 		DragDrop.AllowDrop="True"
 		CornerRadius="40"
-		Background="#FFE8E0">
+		Background="#E6E7E7">
 	
 	<!--界面分成3列-->
 	<Grid ColumnDefinitions="Auto,Auto,Auto">
@@ -23,27 +23,21 @@
 		<!--左侧列-->
 		<Grid Grid.Column="0" Width="304">
 			
-			<!--Bingo Cloud字体-->
-			<TextBlock Text="Bingo Cloud" FontFamily="Arial"
-					   FontWeight="Black" Margin="23,18,0,0"/>
+			<!--Carefree Cloud字体-->
+			<TextBlock Text="Carefree Cloud" FontFamily="Trebuchet MS"
+					   FontWeight="Bold" FontSize="16" Margin="23,18,0,0"/>
 
-			<!--Welcome Back!字体-->
-			<TextBlock Text="Welcome Back!" FontFamily="Segoe Script"
-					   FontWeight="Regular" Margin="64,111,0,0"
-					   FontSize="23"/>
-
-			<!--Three People Talking图片-->
-			<Image Source="avares://CloudClient/Assets/Images/ThreePeopleTalking.png"
-				   Width="250" Height="235"
-				   Margin="42,190,0,0"/>
+			<!--Girl Swing图片-->
+			<Image Source="avares://CloudClient/Assets/Images/GirlSwing.png"
+				   Width="314" VerticalAlignment="Top"
+				   Margin="0,58,0,0" />
 		</Grid>
 
 		<!--中间列-->
 		<Border Grid.Column="1" CornerRadius="20"
-				BorderThickness="7" BorderBrush="White"
 				Width="295" Height="353" Margin="0,5,0,0"
-				BoxShadow="3 6 9 4 #ccc"
-				Background="White">
+				BoxShadow="3 6 9 4 #7D7D7D"
+				Background="#F3F3F3">
 
 			<Grid>
 				<!--登录界面-->
@@ -55,27 +49,29 @@
 
 					<!--用户名输入框-->
 					<Border Width="204" Height="35"
-							Margin="0,30,0,0" Background="#FAF4E2"
-							BoxShadow="3 4 9 0.2 #ccc"
+							Margin="0,30,0,0" Background="#878F9C"
+							BoxShadow="3 4 9 0.2 #7D7D7D"
 							CornerRadius="10">
 						<TextBox x:Name="UserNameBox" BorderThickness="0"
 								 Watermark="UserName"
 								 FontFamily="Arial" FontSize="12"
 								 VerticalContentAlignment="Center"
-								 CornerRadius="10"/>
+								 CornerRadius="10"
+								 />
 					</Border>
 
 					<!--密码输入框-->
 					<DockPanel>
 						<Border Width="162.5" Height="35"
-								Margin="37.5,15,0,0" Background="#FAF4E2"
-								BoxShadow="3 4 9 0.2 #ccc"
+								Margin="44,15,0,0" Background="#878F9C"
+								BoxShadow="3 4 9 0.2 #7D7D7D"
 								CornerRadius="10">
 							<TextBox x:Name="PasswordBox" BorderThickness="0"
 									 Watermark="Password" PasswordChar="●"
 									 FontFamily="Arial" FontSize="12"
 									 VerticalContentAlignment="Center"
-									 CornerRadius="10"/>
+									 CornerRadius="10"
+									 />
 						</Border>
 
 						<DockPanel.Styles>
@@ -88,7 +84,7 @@
 							</Style>
 							
 							<Style Selector="Button:pointerover /template/ContentPresenter">
-								<Setter Property="Background" Value="#FAF4E2"/>
+								<Setter Property="Background" Value="#ACAFB3"/>
 								<Setter Property="RenderTransform" Value="scale(1.11)"/>
 								<Setter Property="Opacity" Value="0.4"/>
 								<Setter Property="CornerRadius" Value="10"></Setter>
@@ -96,9 +92,9 @@
 						</DockPanel.Styles>
 						
 						<!--显示密码按钮-->
-						<Border x:Name="SeePasswordBorder" Margin="5,15,0,0" Background="#FBF3D7"
+						<Border x:Name="SeePasswordBorder" Margin="5,15,0,0" Background="#ACAFB3"
 								Width="37.5" Height="35" CornerRadius="10"
-								BoxShadow="3 4 9 0.2 #ccc">
+								BoxShadow="3 4 9 0.2 #7D7D7D">
 							<Button x:Name="SeePasswordButton" Background="Transparent"
 									VerticalAlignment="Center"
 									Click="TogglePasswordVisibility"
@@ -108,9 +104,9 @@
 						</Border>
 
 						<!--隐藏密码按钮-->
-						<Border x:Name="UnseePasswordBorder" Margin="-33,15,0,0" Background="#FBF3D7"
+						<Border x:Name="UnseePasswordBorder" Margin="-41,15,0,0" Background="#ACAFB3"
 								Width="37.5" Height="35" CornerRadius="10"
-								BoxShadow="3 4 9 0.2 #ccc" IsVisible="False">
+								BoxShadow="3 4 9 0.2 #7D7D7D" IsVisible="False">
 							<Button x:Name="UnseePasswordButton" 
 									Background="Transparent"
 									VerticalAlignment="Center" 
@@ -133,7 +129,7 @@
 						</Style>
 
 						<Style Selector="Button:pointerover /template/ContentPresenter">
-							<Setter Property="Background" Value="#FBC2B2"/>
+							<Setter Property="Background" Value="#495C7B"/>
 							<Setter Property="RenderTransform" Value="scale(1.07)"/>
 							<Setter Property="Opacity" Value="0.4"/>
 							<Setter Property="CornerRadius" Value="10"/>
@@ -142,9 +138,9 @@
 					</StackPanel.Styles>
 
 					<!--登录确认按钮-->
-					<Border x:Name="LoginButton" Background="#FBC2B2" CornerRadius="10"
+					<Border x:Name="LoginButton" Background="#495C7B" CornerRadius="10"
 							Width="81" Height="35" Margin="-100,30,0,0" BorderThickness="0"
-						BoxShadow="3 4 4 0.05 #ccc">
+						BoxShadow="3 4 4 0.05 #7D7D7D">
 						<Button Background="Transparent" Content="Confirm" FontSize="13"
 							FontFamily="Arial" Foreground="White"
 							FontWeight="Black" HorizontalAlignment="Center"
@@ -152,9 +148,9 @@
 					</Border>
 
 					<!--注册按钮-->
-					<Border Background="#FBC2B2" CornerRadius="10"
+					<Border Background="#495C7B" CornerRadius="10"
 							Width="76" Height="35" Margin="100,-35,0,0" BorderThickness="0"
-						BoxShadow="3 4 4 0.05 #ccc">
+						BoxShadow="3 4 4 0.05 #7D7D7D">
 						<Button Background="Transparent" Content="SignUp" FontSize="13"
 								FontFamily="Arial" Foreground="White"
 								FontWeight="Black" HorizontalAlignment="Center"
@@ -173,8 +169,8 @@
 
 					<!--用户名输入框-->
 					<Border Width="204" Height="35"
-							Margin="0,-30,0,0" Background="#FAF4E2"
-							BoxShadow="3 4 9 0.2 #ccc"
+							Margin="-14,-30,0,0" Background="#878F9C"
+							BoxShadow="3 4 9 0.2 #7D7D7D"
 							CornerRadius="10">
 						<TextBox x:Name="UserNameBoxSignUp" BorderThickness="0"
 								 Watermark="UserName"
@@ -186,8 +182,8 @@
 					<!--密码输入框-->
 					<DockPanel>
 						<Border Width="162.5" Height="35"
-								Margin="33,15,0,0" Background="#FAF4E2"
-								BoxShadow="3 4 9 0.2 #ccc"
+								Margin="33,15,0,0" Background="#878F9C"
+								BoxShadow="3 4 9 0.2 #7D7D7D"
 								CornerRadius="10">
 							<TextBox x:Name="PasswordBoxSignUp" BorderThickness="0"
 									 Watermark="Password" PasswordChar="●"
@@ -206,7 +202,7 @@
 							</Style>
 
 							<Style Selector="Button:pointerover /template/ContentPresenter">
-								<Setter Property="Background" Value="#FAF4E2"/>
+								<Setter Property="Background" Value="#ACAFB3"/>
 								<Setter Property="RenderTransform" Value="scale(1.11)"/>
 								<Setter Property="Opacity" Value="0.4"/>
 								<Setter Property="CornerRadius" Value="10"></Setter>
@@ -214,9 +210,9 @@
 						</DockPanel.Styles>
 						
 						<!--显示密码-->
-						<Border x:Name="SeePasswordBorderSignUp" Margin="5,15,0,0" Background="#FBF3D7"
+						<Border x:Name="SeePasswordBorderSignUp" Margin="5,15,0,0" Background="#ACAFB3"
 								Width="37.5" Height="35"
-								BoxShadow="3 4 9 0.2 #ccc"
+								BoxShadow="3 4 9 0.2 #7D7D7D"
 								CornerRadius="10">
 							<Button x:Name="SeePasswordButtonSignUp" Background="Transparent"
 									VerticalAlignment="Center"
@@ -228,9 +224,9 @@
 
 						<!--隐藏密码-->
 						<Border x:Name="UnseePasswordBorderSignUp" 
-								Margin="-28,15,0,0" Background="#FBF3D7"
+								Margin="-43,15,0,0" Background="#ACAFB3"
 								Width="37.5" Height="35" CornerRadius="10"
-								BoxShadow="3 4 9 0.2 #ccc"
+								BoxShadow="3 4 9 0.2 #7D7D7D"
 								IsVisible="False">
 							<Button x:Name="UnseePasswordButtonSignUp" IsVisible="False"
 									Background="Transparent" VerticalAlignment="Center"
@@ -244,8 +240,8 @@
 					<!--确认密码输入框-->
 					<DockPanel>
 						<Border Width="162.5" Height="35"
-								Margin="33,15,0,0" Background="#FAF4E2"
-								BoxShadow="3 4 9 0.2 #ccc"
+								Margin="33,15,0,0" Background="#878F9C"
+								BoxShadow="3 4 9 0.2 #7D7D7D"
 								CornerRadius="10">
 							<TextBox x:Name="PasswordBoxSignUpConfirm"
 									 BorderThickness="0"
@@ -266,7 +262,7 @@
 							</Style>
 
 							<Style Selector="Button:pointerover /template/ContentPresenter">
-								<Setter Property="Background" Value="#FAF4E2"/>
+								<Setter Property="Background" Value="#ACAFB3"/>
 								<Setter Property="RenderTransform" Value="scale(1.11)"/>
 								<Setter Property="Opacity" Value="0.4"/>
 								<Setter Property="CornerRadius" Value="10"></Setter>
@@ -275,9 +271,9 @@
 						
 						<!--显示密码-->
 						<Border x:Name="SeePasswordBorderSignUpConfirm" 
-								Margin="5,15,0,0" Background="#FBF3D7"
+								Margin="5,15,0,0" Background="#ACAFB3"
 								Width="37.5" Height="35" CornerRadius="10"
-								BoxShadow="3 4 9 0.2 #ccc">
+								BoxShadow="3 4 9 0.2 #7D7D7D">
 							<Button x:Name="SeePasswordButtonSignUpConfirm" 
 									Background="Transparent"
 									VerticalAlignment="Center"
@@ -289,9 +285,9 @@
 						
 						<!--隐藏密码-->
 						<Border x:Name="UnseePasswordBorderSignUpConfirm" 
-								Margin="-28,15,0,0" Background="#FBF3D7"
+								Margin="-43,15,0,0" Background="#ACAFB3"
 								Width="37.5" Height="35" CornerRadius="10"
-								BoxShadow="3 4 9 0.2 #ccc"
+								BoxShadow="3 4 9 0.2 #7D7D7D"
 								IsVisible="False">
 							<Button x:Name="UnseePasswordButtonSignUpConfirm" 
 									Background="Transparent" VerticalAlignment="Center"
@@ -315,7 +311,7 @@
 							</Style>
 
 							<Style Selector="Button:pointerover /template/ContentPresenter">
-								<Setter Property="Background" Value="#FBC2B2"/>
+								<Setter Property="Background" Value="#495C7B"/>
 								<Setter Property="RenderTransform" Value="scale(1.07)"/>
 								<Setter Property="Opacity" Value="0.4"/>
 								<Setter Property="CornerRadius" Value="10"></Setter>
@@ -332,9 +328,10 @@
 							<Image Source="{SvgImage /Assets/Images/Back.svg}" Stretch="UniformToFill"/>
 						</Button>
 
-						<Border Background="#FBC2B2" CornerRadius="10"
+						<!--注册按钮-->
+						<Border Background="#495C7B" CornerRadius="10"
 								Width="130" Height="35" Margin="5,0,0,0" BorderThickness="0"
-								BoxShadow="3 4 4 0.05 #ccc">
+								BoxShadow="3 4 4 0.05 #7D7D7D">
 							<Button Background="Transparent" Content="Sign up" FontSize="13"
 								FontFamily="Arial" Foreground="White"
 								FontWeight="Black" HorizontalAlignment="Center"
@@ -383,8 +380,16 @@
 				</Button>
 			</StackPanel>
 
-			<Image Source="avares://CloudClient/Assets/Images/GirlAndDog.png"
-				   Width="303" Margin="-24,140,0,0"/>
+			<!--Welcome Back!字体-->
+			<TextBlock Text="Welcome Back!" FontFamily="Segoe Script"
+					   FontWeight="Regular" Margin="26,173,0,0"
+					   FontSize="23"/>
+			
+			<!--Girl Reading图片-->
+			<Image Source="avares://CloudClient/Assets/Images/GirlReading.png"
+				   Width="232" Margin="0,0,25,-1"
+				   HorizontalAlignment="Right"
+				   VerticalAlignment="Bottom"/>
 
 		</Grid>
 	</Grid>

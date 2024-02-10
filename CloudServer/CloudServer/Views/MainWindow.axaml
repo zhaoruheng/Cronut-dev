@@ -15,7 +15,7 @@
 		SystemDecorations="None"
 		Height="600" Width="1200"
 		DragDrop.AllowDrop="True"
-		Background="#FFE8E0">
+		Background="#DDDEDE">
 	
 	<Window.DataContext>
 		<vm:MainViewModel/>
@@ -24,9 +24,9 @@
 	<Grid RowDefinitions="Auto,Auto">
 		
 		<!--上方的菜单栏-->
-		<Border Grid.Row="0" Background="#C0AFA9" Width="1161" Height="68"
-				Margin="0,19,0,0" CornerRadius="30"
-				BoxShadow="3 4 6 1 #928580"
+		<Border Grid.Row="0" Background="#F3F3F3" Width="1300" Height="70"
+				Margin="0,0,0,0" CornerRadius="30"
+				BoxShadow="3 4 6 1 #A8A8A8"
 				HorizontalAlignment="Center">
 			
 			<Grid ColumnDefinitions="Auto,Auto,Auto">
@@ -56,11 +56,11 @@
 					</StackPanel.Styles>
 					
 					<!--初始化按钮-->
-					<Border Grid.Column="0" Width="80" Height="33" Background="#FBC2B2"
-							Margin="25,0,20,0" VerticalAlignment="Center"
-							BoxShadow="3 4 6 1 #928580"
+					<Border Grid.Column="0" Width="80" Height="33" Background="#495C7B"
+							Margin="100,0,20,0" VerticalAlignment="Center"
+							BoxShadow="3 4 6 1 #A8A8A8"
 							CornerRadius="10">
-						<Button x:Name="InitializeButton" Background="#FBC2B2"
+						<Button x:Name="InitializeButton" Background="#495C7B"
 								HorizontalContentAlignment="Center"
 								HorizontalAlignment="Center"
 								VerticalAlignment="Center"
@@ -73,11 +73,11 @@
 					
 
 					<!--开始按钮-->
-					<Border Grid.Column="1" Width="68" Height="33" Background="#FBC2B2"
+					<Border Grid.Column="1" Width="68" Height="33" Background="#495C7B"
 							VerticalAlignment="Center"
-							BoxShadow="3 4 6 1 #928580"
+							BoxShadow="3 4 6 1 #A8A8A8"
 							CornerRadius="10">
-						<Button x:Name="StartButton" Background="Transparent"
+						<Button x:Name="StartButton" Background="#495C7B"
 								HorizontalContentAlignment="Center"
 								HorizontalAlignment="Center"
 								VerticalAlignment="Center"
@@ -89,14 +89,14 @@
 					</Border>
 					
 					
-					<!--Bingo Cloud文本块-->
-					<TextBlock Grid.Column="2" Text="Bingo Cloud" FontFamily="Arial"
-							   FontSize="22" FontWeight="Black" Margin="300,0,0,0"
+					<!--Carefree Cloud文本块-->
+					<TextBlock Grid.Column="2" Text="Carefree Cloud" FontFamily="Trebuchet MS"
+							   FontSize="24" FontWeight="Bold" Margin="280,0,0,0"
 							   VerticalAlignment="Center"/>
 					
 
 					<!--最小化-->
-					<Button Click="MinButton_Click" Background="Transparent" Margin="380,0,4,0"
+					<Button Click="MinButton_Click" Background="Transparent" Margin="390,0,4,0"
 							Width="34" Height="34" CornerRadius="5">
 						<Image Source="{SvgImage /Assets/Images/MinWindow.svg}" Stretch="UniformToFill"/>
 					</Button>
@@ -125,7 +125,7 @@
 		<!--主体部分-->
 		<Grid Grid.Row="1">
 			<!--左侧的TableControl-->
-			<TabControl TabStripPlacement="Left" Height="509">
+			<TabControl TabStripPlacement="Left" Height="550">
 				<!--主页部分-->
 				<TabItem>
 					<TabItem.Header>
@@ -139,39 +139,39 @@
 						<Grid Grid.Column="0" RowDefinitions="Auto,Auto,Auto" Margin="0,15,0,0">
 
 							<!--实时文件总数-->
-							<Border Grid.Row="0" CornerRadius="20" Background="#FFFAFA"
-									Opacity="80" BoxShadow="3 4 6 1 #928580"
-									Width="344" Height="153">
+							<Border Grid.Row="0" CornerRadius="20" Background="#F3F3F3"
+									Opacity="80" BoxShadow="3 4 6 1 #A8A8A8"
+									Width="344" Height="155">
 								<StackPanel Orientation="Vertical">
 									<TextBlock Text="实时文件总数:" Margin="15,5,0,0"/>
 									<lvc:CartesianChart Series="{Binding SumFileSeries}"
 														YAxes="{Binding YFileAxis}" XAxes="{Binding XAxis}"
-														Width="320" Height="130"/>
+														Width="320" Height="131"/>
 								</StackPanel>
 							</Border>
 
 
 							<!--去重后的文件数-->
-							<Border Grid.Row="1" CornerRadius="20" Background="#FFFAFA"
-									Opacity="80" BoxShadow="3 4 6 1 #928580"
-									Width="344" Height="153" Margin="0,9,0,0">
+							<Border Grid.Row="1" CornerRadius="20" Background="#F3F3F3"
+									Opacity="80" BoxShadow="3 4 6 1 #A8A8A8"
+									Width="344" Height="155" Margin="0,12,0,0">
 								<StackPanel Orientation="Vertical">
 									<TextBlock Text="实时去重后的文件数:" Margin="15,5,0,0"/>
 									<lvc:CartesianChart x:Name="ResFileLiveCharts" Grid.Row="3" Series="{Binding SumResFileSeries}"
 														YAxes="{Binding YResFileAxis}" XAxes="{Binding XAxis}"
-														Width="320" Height="130"/>
+														Width="320" Height="131"/>
 								</StackPanel>
 							</Border>
 							
 							<!--实时用户总数-->
-							<Border Grid.Row="2" CornerRadius="20" Background="#FFFAFA"
-									Opacity="80" BoxShadow="3 4 6 1 #928580"
-									Width="344" Height="155" Margin="0,9,0,0">
+							<Border Grid.Row="2" CornerRadius="20" Background="#F3F3F3"
+									Opacity="80" BoxShadow="3 4 6 1 #A8A8A8"
+									Width="344" Height="157" Margin="0,12,0,0">
 								<StackPanel Orientation="Vertical">
 									<TextBlock Text="实时用户总数:" Margin="15,7,0,0"/>
 									<lvc:CartesianChart Grid.Row="5" Series="{Binding UserSeries}"
 														YAxes="{Binding YUserAxis}" XAxes="{Binding XAxis}"
-														Width="320" Height="130"/>
+														Width="320" Height="132"/>
 								</StackPanel>
 							</Border>
 							
@@ -179,15 +179,15 @@
 						
 						
 						<!--用户动态-->
-						<Grid Grid.Column="1" Margin="10,0,0,0">
-							<Border Background="#EFEFEF" Width="395" Height="481"
-									BoxShadow="3 4 6 1 #928580"
+						<Grid Grid.Column="1" Margin="10,-25,0,0">
+							<Border Background="#EFEFEF" Width="395" Height="490"
+									BoxShadow="3 4 6 1 #A8A8A8"
 									CornerRadius="20"
 									Margin="15,0,0,0">
 								
 								<StackPanel Orientation="Vertical">
-									<Border Background="#99ABA3" CornerRadius="20"
-											BoxShadow="3 4 6 1 #928580"
+									<Border Background="#7B8490" CornerRadius="20"
+											BoxShadow="3 4 6 1 #A8A8A8"
 											Width="358" Height="35"
 											HorizontalAlignment="Center"
 											VerticalAlignment="Top"
@@ -204,7 +204,7 @@
 
 										<ScrollViewer.Styles>
 											<Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-												<Setter Property="Background" Value="#D3DBD8" />
+												<Setter Property="Background" Value="#ACAFB3" />
 											</Style>
 										</ScrollViewer.Styles>
 										
@@ -224,17 +224,17 @@
 						<!--具体算法过程-->
 						<Grid Grid.Column="2" Margin="30,0,0,0">
 							<StackPanel Orientation="Vertical">
-								<Image Source="avares://CloudServer/Assets/Images/Post.png"
-									   Width="240" Margin="0,10,0,5"/>
-
-								<Border Background="#EFEFEF" Width="322" Height="306"
-										CornerRadius="20" BoxShadow="3 4 6 1 #928580">
+								
+								<Image Source="/Assets/Images/Houseplant.png"
+									   Height="200" HorizontalAlignment="Center"/>
+								<Border Background="#EFEFEF" Width="322" Height="308"
+										CornerRadius="20" BoxShadow="3 4 6 1 #A8A8A8">
 									<StackPanel Orientation="Vertical">
 
 										<Border Width="293" Height="35"
 												CornerRadius="20"
-												Background="#99ABA3"
-												BoxShadow="3 4 6 1 #928580"
+												Background="#7B8490"
+												BoxShadow="3 4 6 1 #A8A8A8"
 												Margin="0,10,0,0">
 											<TextBlock Text="Detailed Algorithm Parameter:"
 													   FontFamily="Arial" FontSize="14"
@@ -249,7 +249,7 @@
 
 											<ScrollViewer.Styles>
 												<Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-													<Setter Property="Background" Value="#D3DBD8" />
+													<Setter Property="Background" Value="#ACAFB3" />
 												</Style>
 											</ScrollViewer.Styles>
 											
@@ -282,8 +282,11 @@
 					</TabItem.Header>
 
 					<Grid>
+						<Image Source="/Assets/Images/GirlJumping.png"
+								   HorizontalAlignment="Right"
+								   VerticalAlignment="Bottom" Width="400" Opacity="90"/>
+							
 						<StackPanel Margin="0,10,0,0" Orientation="Vertical">
-
 							<StackPanel.Styles>
 								<Style Selector="Button /template/ContentPresenter">
 									<Setter Property="Transitions">
@@ -303,9 +306,9 @@
 							</StackPanel.Styles>
 							
 							<Border VerticalAlignment="Top" HorizontalAlignment="Left"
-									Background="#EBBC74" CornerRadius="10"
+									Background="#495C7B" CornerRadius="10"
 									Width="400" Height="30" Margin="20,0,0,10"
-									BoxShadow="3 4 6 1 #928580">
+									BoxShadow="3 4 6 1 #A8A8A8">
 								<Button Content="Update User Information List" Click="RefreshUserInfo_Click"
 										HorizontalContentAlignment="Center" Foreground="White"
 										HorizontalAlignment="Center"
@@ -313,7 +316,7 @@
 										CornerRadius="10" Width="390"
 										Background="Transparent"/>
 							</Border>
-
+											
 							<DataGrid x:Name="uuserList" Margin="20,0" ItemsSource="{Binding UserList,Mode=TwoWay}"
 							AutoGenerateColumns="True" IsReadOnly="True"
 							GridLinesVisibility="All"
@@ -322,8 +325,7 @@
 
 						</StackPanel>
 
-						<Image Source="avares://CloudServer/Assets/Images/MakeOK.png" HorizontalAlignment="Right"
-								   VerticalAlignment="Bottom" Height="370"/>
+						
 					</Grid>
 				</TabItem>
 					
@@ -355,9 +357,9 @@
 					</StackPanel.Styles>
 						
 						<Border VerticalAlignment="Top" HorizontalAlignment="Left"
-									Background="#EBBC74" CornerRadius="10"
+									Background="#495C7B" CornerRadius="10"
 									Width="400" Height="30" Margin="20,0,0,10"
-									BoxShadow="3 4 6 1 #928580">
+									BoxShadow="3 4 6 1 #A8A8A8">
 							<Button Content="Update File Information List" Click="RefreshFileInfo_Click"
 									HorizontalContentAlignment="Center" Foreground="White"
 									HorizontalAlignment="Center"
